@@ -8,50 +8,95 @@ Before using Envelope, you need to have the [1Password CLI](https://developer.1p
 
 ## Installation
 
-### Download Pre-built Binary
+### Method 1: Download Pre-built Binary (Recommended)
 
-Download the latest binary for your platform from the [releases page](https://github.com/gaganref/envelope/releases):
+#### macOS
 
-- **macOS (Intel):** `envelope-darwin-amd64`
-- **macOS (Apple Silicon):** `envelope-darwin-arm64`
-- **Windows:** `envelope-windows-amd64.exe`
+1. Download the latest binary from the [releases page](https://github.com/gaganref/envelope/releases):
 
-Make the binary executable (macOS/Linux only):
+   - **Intel Macs:** `envelope-darwin-amd64`
+   - **Apple Silicon Macs:** `envelope-darwin-arm64`
 
-```bash
-chmod +x envelope-darwin-*
-```
+2. Make the binary executable (macOS only):
 
-### Build from Source
+   ```bash
+   chmod +x envelope-darwin-*
+   ```
 
-If you have Go installed, you can build from source:
+3. Run the application:
+   ```bash
+   ./envelope-darwin-amd64    # Intel Macs
+   ./envelope-darwin-arm64    # Apple Silicon Macs
+   ```
 
-```bash
-go install github.com/gaganref/envelope@latest
-```
+#### Windows
 
-Or clone and build locally:
+1. Download the latest binary from the [releases page](https://github.com/gaganref/envelope/releases):
+
+   - **Windows:** `envelope-windows-amd64.exe`
+
+2. Run the application:
+   ```cmd
+   ./envelope-windows-amd64.exe
+   ```
+
+### Method 2: Clone Repository and Build with Go
+
+This method requires Go to be installed on your system.
+
+#### macOS
 
 ```bash
 git clone https://github.com/gaganref/envelope.git
 cd envelope
 go build .
+./envelope
+```
+
+#### Windows
+
+```cmd
+git clone https://github.com/gaganref/envelope.git
+cd envelope
+go build .
+envelope.exe
+```
+
+Alternatively, you can install directly using Go:
+
+```bash
+go install github.com/gaganref/envelope@latest
 ```
 
 ## Usage
 
-Run the application from your terminal:
+### If you downloaded the binary:
+
+**macOS:**
 
 ```bash
-./envelope-darwin-amd64  # macOS Intel
-./envelope-darwin-arm64  # macOS Apple Silicon
-./envelope-windows-amd64.exe  # Windows
+./envelope-darwin-amd64    # Intel Macs
+./envelope-darwin-arm64    # Apple Silicon Macs
 ```
 
-Or if built from source:
+**Windows:**
+
+```cmd
+envelope-windows-amd64.exe
+```
+
+### If you built from source:
+
+**macOS:**
 
 ```bash
 ./envelope
+```
+
+**Windows:**
+
+```cmd
+envelope.exe
 ```
 
 The application will guide you through the following steps:
