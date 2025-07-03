@@ -69,6 +69,8 @@ To create a new release with binaries:
 1. Tag your commit with a version:
 
    ```bash
+   git commit
+   git push
    git tag v1.0.0
    git push origin v1.0.0
    ```
