@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os/exec"
+	"sort"
 	"strings"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -68,6 +69,11 @@ func fetchOpItems(vaultName string) tea.Cmd {
 			return errorMsg{fmt.Errorf("no items found in vault '%s'", vaultName)}
 		}
 
+		// Sort items by title
+		sort.Slice(opItems, func(i, j int) bool {
+			return opItems[i].ItemTitle < opItems[j].ItemTitle
+		})
+
 		return itemsLoadedMsg{items: opItems}
 	}
 }
@@ -114,7 +120,7 @@ func generateEnvContent(detail OpItemDetail) string {
 		}
 
 		for _, field := range fields {
-			sb.WriteString(fmt.Sprintf("%s=%s\n", field.Label, field.Value))
+			sb.WriteString(fmt.Sprintf(`%s="%s"`+"\n", field.Label, field.Value))
 		}
 		sb.WriteString("\n")
 	}
